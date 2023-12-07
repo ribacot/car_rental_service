@@ -2,6 +2,7 @@
   "name": "car_rental_service",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://ribacot.github.io/car_rental_service/",
   "dependencies": {
     "cra-template": "1.2.0",
     "react": "^18.2.0",
