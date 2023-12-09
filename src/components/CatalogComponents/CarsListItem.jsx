@@ -7,25 +7,26 @@ import { addToFavorites, removeFavorites } from "../../Redux/Cars/carsSlice";
 import { getFavoritIdArrSelect } from "../../Redux/Cars/selectors";
 import { createPortal } from "react-dom";
 import ModalWrapper from "../Modal/ModalWrapper";
+import CarCard from "../CarCard/CarCard";
 
-const modalRoot = document.querySelector('#modal');
-
+const modalRoot = document.querySelector("#modal");
 
 export default function CarsListItem({ car = {} }) {
 	const favoriteIdArr = useSelector(getFavoritIdArrSelect);
-	const dispath = useDispatch();
+	const dispatch = useDispatch();
 
 	const [isFavorite, setIsFavorite] = useState(false);
-    const [isModalActive, setIsModalActive] = useState(false);
+	const [isModalActive, setIsModalActive] = useState(false);
 
-    useEffect(() => {
-        if (isModalActive) {
-          document.getElementById('modal').classList.add('noScroll');
-        } else {
-          document.getElementById('modal').classList.remove('noScroll');
-        }
-      }, [isModalActive]);
-    
+	useEffect(() => {
+		if (isModalActive) {
+			// document.getElementById("modal").classList.add("noScroll");
+			document.body.classList.add("noScroll");
+		} else {
+			// document.getElementById("modal").classList.remove("noScroll");
+			document.body.classList.remove("noScroll");
+		}
+	}, [isModalActive]);
 
 	useEffect(() => {
 		const includes = favoriteIdArr?.includes(car.id);
@@ -36,18 +37,17 @@ export default function CarsListItem({ car = {} }) {
 		}
 	}, [favoriteIdArr, car.id]);
 
-    const onToogleModal = () => {
-        setIsModalActive(!isModalActive);
-      };
-    
+	const onToogleModal = () => {
+		setIsModalActive(!isModalActive);
+	};
 
 	const onChengeFavorite = () => {
 		const includes = favoriteIdArr.includes(car.id);
 		if (!includes) {
-			dispath(addToFavorites(car.id));
+			dispatch(addToFavorites(car.id));
 		} else {
 			const removeFavoriteArr = favoriteIdArr.filter((el) => el !== car.id);
-			dispath(removeFavorites(removeFavoriteArr));
+			dispatch(removeFavorites(removeFavoriteArr));
 		}
 	};
 
@@ -59,14 +59,17 @@ export default function CarsListItem({ car = {} }) {
 				</button>
 			</div>
 
-			<Button clasName="" onClick={onToogleModal}>Learn more</Button>
+			<Button clasName="" onClick={onToogleModal}>
+				Learn more
+			</Button>
 
-            {isModalActive &&
-            createPortal(
-              <ModalWrapper onToogleModal={onToogleModal} ></ModalWrapper>,
-              modalRoot,
-            )}
-
+			{isModalActive &&
+				createPortal(
+					<ModalWrapper onClick={onToogleModal}>
+						<CarCard onClick={onToogleModal} carId={car.id} />
+					</ModalWrapper>,
+					modalRoot
+				)}
 		</li>
 	);
 }
