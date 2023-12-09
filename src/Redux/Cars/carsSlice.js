@@ -6,14 +6,14 @@ const hendlePending = (state) => {
 	return { ...state, isLoading: true };
 };
 const hendleFulfilledGetAll = (state, { payload }) => {
-	return { ...state, cars: [...payload], isLoading: false, error: null };
+	return { ...state, cars: [...state.cars, ...payload], isLoading: false, error: null };
 };
 
 const hendleFulfilledGetById = (state, { payload }) => {
 	return { ...state, selectedCar: payload, isLoading: false, error: null };
 };
 const hendleRejected = (state, { payload }) => {
-	return { ...state, error: payload };
+	return { ...state, error: payload, isLoading: false };
 };
 
 const carsSlice = createSlice({
@@ -21,10 +21,17 @@ const carsSlice = createSlice({
 	initialState: carsInitialState,
 	reducers: {
 		addToFavorites: (state, { payload }) => {
-			return { ...state, favoriteCars: [...state.favoriteCars, payload] };
+			return {
+				...state,
+				favoriteCars: [...state.favoriteCars, payload],
+				isLoading: false,
+			};
 		},
 		removeFavorites: (state, { payload }) => {
 			return { ...state, favoriteCars: [...payload] };
+		},
+		removeCars: (state) => {
+			return { ...state, cars:[] };
 		},
 	},
 
@@ -42,4 +49,4 @@ const carsSlice = createSlice({
 });
 
 export const allCarsReducer = carsSlice.reducer;
-export const { addToFavorites, removeFavorites } = carsSlice.actions;
+export const { addToFavorites, removeFavorites, removeCars } = carsSlice.actions;

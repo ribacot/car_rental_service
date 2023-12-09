@@ -20,10 +20,8 @@ export default function CarsListItem({ car = {} }) {
 
 	useEffect(() => {
 		if (isModalActive) {
-			// document.getElementById("modal").classList.add("noScroll");
 			document.body.classList.add("noScroll");
 		} else {
-			// document.getElementById("modal").classList.remove("noScroll");
 			document.body.classList.remove("noScroll");
 		}
 	}, [isModalActive]);
