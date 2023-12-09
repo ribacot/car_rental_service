@@ -1,0 +1,31 @@
+.listNav {
+  display: flex;
+  /* flex-direction: column; */
+  gap: 20px;
+  align-items: center;
+
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 44px;
+  letter-spacing: 0.04em;
+
+}
+@media screen and (min-width: 768px) {
+  .listNav {
+    font-size: 48px;
+    line-height: 66px;
+    gap: 40px;
+
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .listNav {
+    flex-direction: row;
+    gap: 60px;
+    
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 27px;
+  }
+}
