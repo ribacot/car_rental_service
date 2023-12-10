@@ -7,7 +7,8 @@ export default function TitleCar({ car = {}, isCatalog = true, className = "" })
 			} ${className}`}
 		>
 			<h3>
-				{make} {model ? <span className="text-blue font-[Inter]">{model}</span> : null},
+				{make} {model ? <span className="text-blue font-[Inter]">{model}</span> : null}
+				,&nbsp;
 				{year}
 			</h3>
 			{isCatalog ? rentalPrice : null}

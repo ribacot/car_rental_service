@@ -24,7 +24,6 @@ export default function CarCard({ onClick, car }) {
 			<h4>Accessories and functionalities:</h4>
 			<ListDiscriptionCar descriptionsArr={accessoriesArr} />
 			<h4>Rental Conditions: </h4>
-			{/* <ListDiscriptionCar descriptionsArr={conditionsArr} /> */}
 			<ConditionsList conditionsArr={conditionsArr} />
 
 			<RentalCar tel="+380730000000">Rental car</RentalCar>
