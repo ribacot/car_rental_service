@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import Button from "../Button";
 import { addToFavorites, removeFavorites } from "../../Redux/Cars/carsSlice";
-import { getFavoritIdArrSelect } from "../../Redux/Cars/selectors";
+import { getCarByIdSelect, getFavoritIdArrSelect } from "../../Redux/Cars/selectors";
 import { createPortal } from "react-dom";
 import ModalWrapper from "../Modal/ModalWrapper";
 import CarCard from "../CarCard/CarCard";
@@ -11,27 +11,21 @@ import BtnFavorite from "./BtnFavorite";
 import Img from "../Ui/Img";
 import ListDiscriptionCar from "./ListDiscriptionCar";
 import TitleCar from "./TitleCar";
-import './catalog.css'
+import "./catalog.css";
+import { getCarByIdThunk } from "../../Redux/Cars/thunks";
+import { descriptionsArrItem } from "../../utilites/descriptionsArrItem";
 
 const modalRoot = document.querySelector("#modal");
 
 export default function CarsListItem({ car = {} }) {
 	const favoriteIdArr = useSelector(getFavoritIdArrSelect);
+	const selectedCar = useSelector(getCarByIdSelect);
 	const dispatch = useDispatch();
 
 	const [isFavorite, setIsFavorite] = useState(false);
 	const [isModalActive, setIsModalActive] = useState(false);
 
-	const [city, country] = car.address?.split(", ").slice(1);
-	const descriptionsArr = [
-		city,
-		country,
-		car.rentalCompany,
-		car.type,
-		car.model,
-		car.id,
-		car.functionalities[2],
-	];
+	const descriptionsArr =descriptionsArrItem(car)
 
 	useEffect(() => {
 		if (isModalActive) {
@@ -52,6 +46,7 @@ export default function CarsListItem({ car = {} }) {
 
 	const onToogleModal = () => {
 		setIsModalActive(!isModalActive);
+		if (!isModalActive) dispatch(getCarByIdThunk(car.id));
 	};
 
 	const onChengeFavorite = () => {
@@ -72,7 +67,10 @@ export default function CarsListItem({ car = {} }) {
 					<BtnFavorite onClick={onChengeFavorite} isFavorite={isFavorite} />
 				</div>
 				<TitleCar car={car} className="mb-[8px]" />
-				<ListDiscriptionCar descriptionsArr={descriptionsArr} className="itemDescriptionText pb-[28px]" />
+				<ListDiscriptionCar
+					descriptionsArr={descriptionsArr}
+					className="itemDescriptionText pb-[28px]"
+				/>
 			</div>
 
 			<Button clasName="" onClick={onToogleModal}>
@@ -82,7 +80,7 @@ export default function CarsListItem({ car = {} }) {
 			{isModalActive &&
 				createPortal(
 					<ModalWrapper onClick={onToogleModal}>
-						<CarCard onClick={onToogleModal} carId={car.id} />
+						{selectedCar ? <CarCard onClick={onToogleModal} car={selectedCar} /> : null}
 					</ModalWrapper>,
 					modalRoot
 				)}
