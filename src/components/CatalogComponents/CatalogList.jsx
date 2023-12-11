@@ -50,10 +50,10 @@ export default function CatalogList({ isFavoritePage = false }) {
 			<ul className="flex flex-wrap gap-[28px] ">
 				{!isFavoritePage
 					? cars?.map((car) => <CarsListItem car={car} key={car.id} />)
-					: favoriteCars.length &&
-					  favoriteCars?.map((car) => <CarsListItem car={car} key={car.id} />)}
+					: favoriteCars.length ?
+					  favoriteCars?.map((car) => <CarsListItem car={car} key={car.id} />):null}
 			</ul>
-			{isloadMore && <LoadMore onClick={onloadMore} />}
+			{isloadMore&!isFavoritePage ? <LoadMore onClick={onloadMore} />:null}
 		</>
 	);
 }
