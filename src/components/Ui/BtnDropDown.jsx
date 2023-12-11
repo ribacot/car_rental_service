@@ -1,5 +1,5 @@
-import { ReactComponent as Down } from "../../assets/chevron-down.svg";
-import { ReactComponent as Up } from "../../assets/chevron-up.svg";
+import { ReactComponent as Down } from "../../svg/chevron-down.svg";
+import { ReactComponent as Up } from "../../svg/chevron-up.svg";
 
 export default function BtnDropDown({ isOpen = false, onClick }) {
 	return (

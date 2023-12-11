@@ -9,5 +9,5 @@ export function conditionsArrCard({ rentalConditions, mileage, rentalPrice }) {
 		`Mileage: ${mileage}`,
 		`Price: ${rentalPrice}`,
 	];
-    return conditionsArr
+	return conditionsArr;
 }

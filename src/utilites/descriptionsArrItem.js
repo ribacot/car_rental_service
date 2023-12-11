@@ -10,5 +10,5 @@ export const descriptionsArrItem = (car) => {
 		car.id,
 		car.functionalities[2],
 	];
-    return descriptionsArr
+	return descriptionsArr;
 };

@@ -1,7 +1,6 @@
 export function descriptionsArrCard(car) {
 	const [city, country] = car.address?.split(", ").slice(1);
 
-
 	const descriptionsArr = [
 		city,
 		country,

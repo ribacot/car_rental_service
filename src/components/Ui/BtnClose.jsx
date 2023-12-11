@@ -1,4 +1,4 @@
-import { ReactComponent as Close } from "../../assets/x.svg";
+import { ReactComponent as Close } from "../../svg/x.svg";
 
 export default function BtnClose({ onClick, className = "" }) {
 	return (
