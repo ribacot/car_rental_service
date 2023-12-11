@@ -1,7 +1,9 @@
 export default function LoadMore({ onClick }) {
 	return (
-		<button type="button" onClick={onClick}>
-			Load more
-		</button>
+		<div className="flex justify-center">
+			<button type="button" onClick={onClick} className=" text-blue underline-offset-1 hover:text-darckBlue">
+				Load more
+			</button>
+		</div>
 	);
 }

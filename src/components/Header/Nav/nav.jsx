@@ -18,7 +18,6 @@ export default function Nav({ className= "", styleLogo = "", styleNavList = "", 
 	return (
 		<div className={className}>
 			<NavLink to="/" state={{ from: location }} className={`${styleLogo}`}>
-				{/* <Logo className="w-[116px] md:w-[162px]" onClick={onClick} /> */}
         LOGO
 			</NavLink>
 
@@ -29,8 +28,8 @@ export default function Nav({ className= "", styleLogo = "", styleNavList = "", 
 							to={path}
 							id={text}
 							state={{ from: location }}
-							className={`cursor-pointer hover:opacity-80 ${
-								transformPath(path) === transformPath(pathPage) ? "text-red-500 " : ""
+							className={`cursor-pointer hover:text-darckBlue ${
+								transformPath(path) === transformPath(pathPage) ? "text-blue " : ""
 							}`}
 						>
 							{firstLetterUp(text)}
