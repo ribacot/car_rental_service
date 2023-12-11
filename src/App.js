@@ -3,7 +3,6 @@ import Catalog from "./pages/Catalog/Catalog";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
 import MainPage from "./pages/MainPage/MainPage";
 import Favorite from "./pages/Favorite/Favorite";
-import ErrorPage from "./pages/ErrorPage/ErrorPage";
 
 
 
