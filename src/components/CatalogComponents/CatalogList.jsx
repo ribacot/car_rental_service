@@ -54,7 +54,7 @@ export default function CatalogList({ isFavoritePage = false }) {
 					? favoriteCars?.map((car) => <CarsListItem car={car} key={car.id} />)
 					: null}
 			</ul>
-			{isloadMore & !isFavoritePage & cars.length? <LoadMore onClick={onloadMore} /> : null}
+			{isloadMore & !isFavoritePage ? <LoadMore onClick={onloadMore} /> : null}
 		</>
 	);
 }
