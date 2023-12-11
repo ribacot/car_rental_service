@@ -1,9 +1,9 @@
-export default function Button({ children, clasName="", onClick }) {
+export default function Button({ children, clasName="",type="button", onClick }) {
 	return (
 		<button
-			type="button"
+			type={type}
 			onClick={onClick}
-			className={`flex justify-center items-center h-[44px] w-full text-white bg-blue transition  duration-300 ease-in-out hover:bg-darckBlue rounded-[12px] ${clasName}
+			className={`flex justify-center items-center h-[44px]  text-white bg-blue transition  duration-300 ease-in-out hover:bg-darckBlue rounded-[12px] ${clasName}
     `}
 		>
 			{children}

@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { instanceCars } from "./servise/instanceAxios";
 
 export const getAllcarsThunk = createAsyncThunk("cars/getAll", async (data={}) => {
-	const{page=1,limit=12}=data
+	const{page=1,limit=12,filter=""}=data
 	const cars = await instanceCars("cars",{params:{page,limit}});
 	return cars.data;
 });
