@@ -14,7 +14,7 @@ function App() {
 				<Route index element={<MainPage />} />
 				<Route path="/catalog" element={<Catalog />} />
 				<Route path="/favorite" element={<Favorite />} />
-				<Route path="*" element={<ErrorPage />} />
+				<Route path="*" element={<MainPage />} />
 			</Route>
 		</Routes>
 	);
