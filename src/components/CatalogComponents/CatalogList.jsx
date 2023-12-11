@@ -3,7 +3,7 @@ import { getAllCarsSelect, getFavoritIdArrSelect } from "../../Redux/Cars/select
 import CarsListItem from "./CarsListItem";
 import { useEffect, useState } from "react";
 import { getAllcarsThunk } from "../../Redux/Cars/thunks";
-import LoadMore from "../LoadMore/LoadMore";
+import LoadMore from "../Ui/LoadMore";
 
 export default function CatalogList({ isFavoritePage = false }) {
 	const dispatch = useDispatch();

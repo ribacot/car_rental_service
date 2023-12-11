@@ -1,3 +1,4 @@
+
 export default function LoadMore({ onClick }) {
 	return (
 		<div className="flex justify-center">
