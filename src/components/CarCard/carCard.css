@@ -1,3 +1,14 @@
+.itemDescriptionText {
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 18px;
+	letter-spacing: 0em;
+	color: #12141780;
+
+
+}
+
+
 .namberConditions {
 	font-size: 12px;
 	font-weight: 600;
@@ -5,15 +16,27 @@
 	letter-spacing: -0.02em;
 }
 
+
+
 .conditionsListText {
 	font-size: 12px;
 	font-weight: 400;
 	line-height: 18px;
 	letter-spacing: -0.02em;
+	color: #363535;
+
 }
-.descriptionCardCarText {
+
+
+.descriptionCardCarText,.descriptionCardCarTitle {
 	font-size: 14px;
 	font-weight: 400;
 	line-height: 20px;
 	letter-spacing: 0em;
+}
+.descriptionCardCarTitle{
+	font-weight: 500;
+	color:#121417;
+
+
 }
