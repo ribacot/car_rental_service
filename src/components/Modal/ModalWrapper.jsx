@@ -1,6 +1,14 @@
 import { useCallback, useEffect } from "react";
+import BtnClose from "../Ui/BtnClose";
 
-export default function ModalWrapper({ children, onClick }) {
+export default function ModalWrapper({ children, onClick, isModalActive }) {
+	useEffect(() => {
+		if (isModalActive) {
+			document.body.classList.add("noScroll");
+		} else {
+			document.body.classList.remove("noScroll");
+		}
+	}, [isModalActive]);
 
 	const onClickmemo = useCallback(() => {
 		onClick();
@@ -24,10 +32,13 @@ export default function ModalWrapper({ children, onClick }) {
 
 	return (
 		<div
-			className="fixed top-0 left-0 w-screen h-screen bg-[#12141780] backdrop-blur-xl flex justify-center items-center"
+			className="fixed top-0 left-0 w-screen h-screen bg-[#12141780] backdrop-blur-xl flex justify-center items-center overflow-y-scroll snap-align-nonesnap-n"
 			onClick={hendleBackDrop}
 		>
-			{children}
+			<div className="relative  w-[541px]  rounded-[24px]  bg-white ">
+				{children}
+				<BtnClose className="absolute top-[16px] right-[16px]" onClick={onClick} />
+			</div>
 		</div>
 	);
 }

@@ -17,3 +17,11 @@ input::placeholder {
 .border{
 	border-top: 1px solid #1214170D
 }
+.dropDownText{
+font-size: 16px;
+font-weight: 500;
+line-height: 20px;
+letter-spacing: 0em;
+color: #12141733;
+
+}

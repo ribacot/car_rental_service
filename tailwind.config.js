@@ -2,9 +2,15 @@
 module.exports = {
 	content: ["./index.html", "./src/**/*.{html,js,jsx}"],
 	theme: {
-		// fontFamily: {
-		//   manrope: ['Manrope', 'sans-serif'],
-		// },
+		screens: {
+			sm: '420px',
+			md: '768px',
+			xl: '1440px',
+			smOnly: { max: '767.98px' },
+			mdOnly: { min: '768px', max: '1279.98px' },
+			notXl: { max: '1439.98px' },
+		  },
+	  
 		fontFamily: {
 			inter: ['"Inter",sans-serif'],
 			sans: [
@@ -17,9 +23,6 @@ module.exports = {
 		},
 
 		extend: {
-			screens: {
-				width: "1440px",
-			},
 			colors: {
 				blue: "#3470FF",
 				darckBlue: "#0B44CD",

@@ -47,7 +47,7 @@ export default function CatalogList({ isFavoritePage = false }) {
 
 	return (
 		<>
-			<ul className="flex flex-wrap gap-[28px] pb-[100px] ">
+			<ul className="flex flex-wrap gap-[28px] pb-[100px] justify-center md:justify-between">
 				{!isFavoritePage
 					? cars?.map((car) => <CarsListItem car={car} key={car.id} />)
 					: favoriteCars.length

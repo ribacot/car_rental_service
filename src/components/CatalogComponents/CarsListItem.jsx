@@ -25,15 +25,7 @@ export default function CarsListItem({ car = {} }) {
 	const [isFavorite, setIsFavorite] = useState(false);
 	const [isModalActive, setIsModalActive] = useState(false);
 
-	const descriptionsArr =descriptionsArrItem(car)
-
-	useEffect(() => {
-		if (isModalActive) {
-			document.body.classList.add("noScroll");
-		} else {
-			document.body.classList.remove("noScroll");
-		}
-	}, [isModalActive]);
+	const descriptionsArr = descriptionsArrItem(car);
 
 	useEffect(() => {
 		const includes = favoriteIdArr?.includes(car.id);
@@ -60,7 +52,7 @@ export default function CarsListItem({ car = {} }) {
 	};
 
 	return (
-		<li className="flex flex-col justify-between w-[274px]  rounded-t-[14px] rounded-b-[12px]">
+		<li className="flex flex-col justify-between w-[274px] md:w-[340px] xl:w-[274px] rounded-t-[14px] rounded-b-[12px]">
 			<div>
 				<div className="relative w-full h-[268px] rounded-[14px] overflow-hidden mb-[14px] bg-slate-300 ">
 					<Img src={car.photoLink} alt={car.make} />
@@ -79,7 +71,7 @@ export default function CarsListItem({ car = {} }) {
 
 			{isModalActive &&
 				createPortal(
-					<ModalWrapper onClick={onToogleModal}>
+					<ModalWrapper onClick={onToogleModal} isModalActive={isModalActive}>
 						{selectedCar ? <CarCard onClick={onToogleModal} car={selectedCar} /> : null}
 					</ModalWrapper>,
 					modalRoot

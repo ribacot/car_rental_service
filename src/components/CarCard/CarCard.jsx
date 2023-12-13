@@ -5,7 +5,7 @@ import ConditionsList from "./ConditionsList";
 import { descriptionsArrCard } from "../../utilites/descriptionsArrCard";
 import { conditionsArrCard } from "../../utilites/conditionsArrCard";
 import "./carCard.css";
-import BtnClose from "../Ui/BtnClose";
+
 export default function CarCard({ onClick, car }) {
 	const { accessories, functionalities, description } = car;
 
@@ -15,7 +15,7 @@ export default function CarCard({ onClick, car }) {
 	const conditionsArr = conditionsArrCard(car);
 
 	return (
-		<div className="relative flex flex-col gap-[14px] w-[541px]  rounded-[24px] p-[40px] bg-white ">
+		<div className=" flex flex-col gap-[14px] w-full rounded-[24px] p-[40px] bg-white ">
 			<div className=" w-full h-[248px] rounded-[14px] overflow-hidden  bg-slate-300 ">
 				<img src={car.photoLink} alt={car.make} className="h-full w-full object-cover " />
 			</div>
@@ -42,7 +42,6 @@ export default function CarCard({ onClick, car }) {
 			</div>
 
 			<RentalCar tel="+380730000000">Rental car</RentalCar>
-			<BtnClose className="absolute top-[16px] right-[16px]" onClick={onClick} />
 		</div>
 	);
 }
