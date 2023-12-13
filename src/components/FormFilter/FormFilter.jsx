@@ -39,6 +39,7 @@ export default function FormFilter() {
 				className="flex items-end gap-[18px]"
 			>
 				<InputSelect
+
 					valueObj={ForminputsValuesArr}
 					register={register}
 					isDropdown={isDropdown}
