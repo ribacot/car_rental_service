@@ -13,6 +13,8 @@ export default function InputSelect({ valueObj, register, isDropdown, onDrop }) 
 		EL.focus();
 		setvalue(el);
 	};
+
+	console.log(id);
 	return (
 		<div>
 			<label htmlFor={id} className="lebleText">
