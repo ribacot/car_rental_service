@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import Button from "../Button";
 import { useState } from "react";
-import ModalWrapper from "../Modal/ModalWrapper";
 import InputSelect from "./InputSelect";
 
 const ForminputsValuesArr = {
@@ -11,7 +10,6 @@ const ForminputsValuesArr = {
 };
 
 export default function FormFilter() {
-	const [isModalActive, setIsModalActive] = useState(false);
 	const [isDropdown, setIsOpenDropdown] = useState(false);
 
 	const initialForm = {
@@ -28,7 +26,6 @@ export default function FormFilter() {
 		const { model } = data;
 		model && console.log("model: ", model);
 		setIsOpenDropdown(false);
-		// setIsModalActive(true);
 		reset();
 	};
 
@@ -51,15 +48,6 @@ export default function FormFilter() {
 					Search
 				</Button>
 			</form>
-			{isModalActive && (
-				<ModalWrapper
-					onClick={() => {
-						setIsModalActive(!isModalActive);
-					}}
-				>
-					<h2>Filter in progress...</h2>
-				</ModalWrapper>
-			)}
 		</div>
 	);
 }
