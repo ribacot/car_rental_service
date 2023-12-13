@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import Button from "../Button";
 import { useState } from "react";
-import InputSelect from "./InputSelect";
+import InputSelect from './InputSElect'
 
 const ForminputsValuesArr = {
 	id: "model",
