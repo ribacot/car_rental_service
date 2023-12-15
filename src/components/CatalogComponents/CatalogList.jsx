@@ -4,10 +4,12 @@ import CarsListItem from "./CarsListItem";
 import { useEffect, useState } from "react";
 import { getAllcarsThunk } from "../../Redux/Cars/thunks";
 import LoadMore from "../Ui/LoadMore";
+import { filterSelector } from "../../Redux/Filter/filterSelectors";
 
 export default function CatalogList({ isFavoritePage = false }) {
 	const dispatch = useDispatch();
 	const { cars } = useSelector(getAllCarsSelect);
+	const  {model}  = useSelector(filterSelector);
 	const favoriteIdArr = useSelector(getFavoritIdArrSelect);
 
 	const [isloadMore, setIsloadMore] = useState(true);
@@ -31,9 +33,9 @@ export default function CatalogList({ isFavoritePage = false }) {
 
 	useEffect(() => {
 		if (!cars.length) {
-			dispatch(getAllcarsThunk(page));
+			dispatch(getAllcarsThunk({page,filter:model}));
 		}
-	}, [dispatch, cars.length, page]);
+	}, [dispatch, cars.length, page,model]);
 
 	useEffect(() => {
 		if ((page > 1) & (Math.ceil(carrentPage) < page)) {

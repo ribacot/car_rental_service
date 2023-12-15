@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
-import Button from "../Button";
 import { addToFavorites, removeFavorites } from "../../Redux/Cars/carsSlice";
 import { getCarByIdSelect, getFavoritIdArrSelect } from "../../Redux/Cars/selectors";
 import { createPortal } from "react-dom";
@@ -14,6 +13,7 @@ import TitleCar from "./TitleCar";
 import "./catalog.css";
 import { getCarByIdThunk } from "../../Redux/Cars/thunks";
 import { descriptionsArrItem } from "../../utilites/descriptionsArrItem";
+import Button from "../Ui/Button";
 
 const modalRoot = document.querySelector("#modal");
 

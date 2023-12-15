@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./form.css";
-export default function ListDropDown({ arr = [], onClick }) {
+export default function ListDropDown({ arr = [], onClick, register, id }) {
 	const [numItem, setNumItem] = useState(null);
 
 	const hendleClick = (el, idx) => {
@@ -13,10 +13,12 @@ export default function ListDropDown({ arr = [], onClick }) {
 				{arr.map((el, idx) => (
 					<li
 						key={idx}
-						onClick={() => hendleClick(el,idx)}
-						className={`cursor-pointer ${numItem===idx ? "text-darck" : ""}`}
+						onClick={() => hendleClick(el, idx)}
+						className={`cursor-pointer ${numItem === idx ? "text-darck" : ""}`}
 					>
-						<button type="button"> {el}</button>
+						<button type="button" >
+							{el}
+						</button>
 					</li>
 				))}
 			</ul>

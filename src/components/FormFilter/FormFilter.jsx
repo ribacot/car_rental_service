@@ -1,17 +1,29 @@
 import { useForm } from "react-hook-form";
-import Button from "../Button";
+import Button from "../Ui/Button";
 import { useState } from "react";
-import InputSelect from './InputSElect'
+import InputSelect from "./InputSElect";
+import { modelArr } from "./downDropArrs";
+import { priceArr } from "./downDropArrs";
+import { useDispatch } from "react-redux";
+import { removeCars } from "../../Redux/Cars/carsSlice";
+import { addFilter } from "../../Redux/Filter/filterSlice";
 
-const ForminputsValuesArr = {
+const modelInputsObj = {
 	id: "model",
 	placeholder: "Enter the text",
 	label: "Car brand",
 };
+const priceSelectObj = {
+	id: "price",
+	placeholder: "To $",
+	label: "Price/ 1 hour",
+};
+
+const stopWord = "Select all";
 
 export default function FormFilter() {
-	const [isDropdown, setIsOpenDropdown] = useState(false);
-
+	const [isDropdown, setIsOpenDropdown] = useState(true);
+	const dispatch = useDispatch();
 	const initialForm = {
 		model: "",
 		price: "",
@@ -24,9 +36,20 @@ export default function FormFilter() {
 
 	const onSubmit = (data) => {
 		const { model } = data;
-		model && console.log("model: ", model);
-		setIsOpenDropdown(false);
+		if (model.toLowerCase() === stopWord.toLowerCase()) {
+			dispatch(addFilter({ model: "" }));
+			dispatch(removeCars());
+
+			return;
+		}
+		dispatch(removeCars());
+		model && dispatch(addFilter({ model }));
+		onDrop();
 		reset();
+	};
+
+	const onDrop = () => {
+		setIsOpenDropdown(false);
 	};
 
 	return (
@@ -39,11 +62,18 @@ export default function FormFilter() {
 				className="flex items-end gap-[18px]"
 			>
 				<InputSelect
-
-					valueObj={ForminputsValuesArr}
+					valueObj={modelInputsObj}
+					register={register}
+					isDropdown={isDropdown}
+					onDrop={onDrop}
+					dropDownArr={modelArr}
+				/>
+				<InputSelect
+					valueObj={priceSelectObj}
 					register={register}
 					isDropdown={isDropdown}
 					onDrop={() => setIsOpenDropdown(!isDropdown)}
+					dropDownArr={priceArr({ start: 30, limit: 200, step: 10 })}
 				/>
 				<Button type="submit" clasName="w-fit px-[44px] py-[14px] ">
 					Search

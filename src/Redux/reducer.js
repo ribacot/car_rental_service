@@ -1,5 +1,7 @@
 import { combineReducers } from "redux";
 import { allCarsReducer } from "./Cars/carsSlice";
-export const reducer= combineReducers({
-    allCars: allCarsReducer,
-})
+import { filtersReducer } from "./Filter/filterSlice";
+export const reducer = combineReducers({
+	allCars: allCarsReducer,
+	filters: filtersReducer,
+});
