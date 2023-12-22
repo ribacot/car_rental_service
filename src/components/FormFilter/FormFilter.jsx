@@ -1,11 +1,13 @@
 import { useForm } from "react-hook-form";
-import Button from "../Ui/Button";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+
 import { modelArr } from "./downDropArrs";
 import { priceArr } from "./downDropArrs";
-import { useDispatch } from "react-redux";
 import { removeCars } from "../../Redux/Cars/carsSlice";
 import { addFilter } from "../../Redux/Filter/filterSlice";
+import Button from "../Ui/Button";
+
 import InputSelect from "./InputSElect";
 
 const modelInputsObj = {

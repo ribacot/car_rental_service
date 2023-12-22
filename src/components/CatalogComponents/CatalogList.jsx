@@ -33,7 +33,7 @@ export default function CatalogList({ isFavoritePage = false }) {
 
 	useEffect(() => {
 		if (!cars.length) {
-			dispatch(getAllcarsThunk({page,filter:model}));
+			dispatch(getAllcarsThunk({page,make:model}));
 		}
 	}, [dispatch, cars.length, page,model]);
 
