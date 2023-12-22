@@ -14,9 +14,11 @@ export default function ListDropDown({ arr = [], onClick, register, id }) {
 					<li
 						key={idx}
 						onClick={() => hendleClick(el, idx)}
-						className={`cursor-pointer ${numItem === idx ? "text-darck" : ""}`}
+						className={`cursor-pointer ${
+							numItem === idx ? "text-darck" : ""
+						} hover:text-darck hover:text-opacity-80`}
 					>
-						<button type="button" >
+						<button type="button" value={el}>
 							{el}
 						</button>
 					</li>

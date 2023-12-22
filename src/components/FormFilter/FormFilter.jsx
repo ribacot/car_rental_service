@@ -1,18 +1,19 @@
 import { useForm } from "react-hook-form";
 import Button from "../Ui/Button";
 import { useState } from "react";
-import InputSelect from "./InputSElect";
 import { modelArr } from "./downDropArrs";
 import { priceArr } from "./downDropArrs";
 import { useDispatch } from "react-redux";
 import { removeCars } from "../../Redux/Cars/carsSlice";
 import { addFilter } from "../../Redux/Filter/filterSlice";
+import InputSelect from "./InputSElect";
 
 const modelInputsObj = {
 	id: "model",
 	placeholder: "Enter the text",
 	label: "Car brand",
 };
+
 const priceSelectObj = {
 	id: "price",
 	placeholder: "To $",
@@ -24,6 +25,7 @@ const stopWord = "Select all";
 export default function FormFilter() {
 	const [isDropdown, setIsOpenDropdown] = useState(true);
 	const dispatch = useDispatch();
+
 	const initialForm = {
 		model: "",
 		price: "",
@@ -35,7 +37,9 @@ export default function FormFilter() {
 	});
 
 	const onSubmit = (data) => {
-		const { model } = data;
+		const { model, price } = data;
+		console.log("model: ", model);
+		console.log("price: ", price);
 		if (model.toLowerCase() === stopWord.toLowerCase()) {
 			dispatch(addFilter({ model: "" }));
 			dispatch(removeCars());
@@ -64,9 +68,11 @@ export default function FormFilter() {
 				<InputSelect
 					valueObj={modelInputsObj}
 					register={register}
+					label={modelInputsObj.label}
 					isDropdown={isDropdown}
 					onDrop={onDrop}
 					dropDownArr={modelArr}
+					required
 				/>
 				<InputSelect
 					valueObj={priceSelectObj}
@@ -74,6 +80,7 @@ export default function FormFilter() {
 					isDropdown={isDropdown}
 					onDrop={() => setIsOpenDropdown(!isDropdown)}
 					dropDownArr={priceArr({ start: 30, limit: 200, step: 10 })}
+					label={priceSelectObj.label}
 				/>
 				<Button type="submit" clasName="w-fit px-[44px] py-[14px] ">
 					Search
