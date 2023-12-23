@@ -75,7 +75,8 @@ export default function FormFilter() {
 					isDropdown={isDropdown}
 					onDrop={onDrop}
 					dropDownArr={modelArr}
-					required
+					className="w-[224px]"
+
 				/>
 				<InputSelect
 					valueObj={priceSelectObj}
@@ -84,6 +85,7 @@ export default function FormFilter() {
 					onDrop={() => setIsOpenDropdown(!isDropdown)}
 					dropDownArr={priceArr({ start: 30, limit: 200, step: 10 })}
 					label={priceSelectObj.label}
+					className="w-[125px]"
 				/>
 				<Button type="submit" clasName="w-fit px-[44px] py-[14px] ">
 					Search

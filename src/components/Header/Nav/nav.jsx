@@ -28,7 +28,7 @@ export default function Nav({ className= "", styleLogo = "", styleNavList = "", 
 							to={path}
 							id={text}
 							state={{ from: location }}
-							className={`cursor-pointer hover:text-darckBlue ${
+							className={`cursor-pointer hover:text-darkBlue ${
 								transformPath(path) === transformPath(pathPage) ? "text-blue " : ""
 							}`}
 						>

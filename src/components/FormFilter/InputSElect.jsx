@@ -9,6 +9,7 @@ export default function InputSelect({
 	isDropdown,
 	onDrop,
 	dropDownArr = [],
+	className=""
 }) {
 	const { id = "", placeholder = "", label = "" } = valueObj;
 	const [value, setvalue] = useState("");
@@ -50,7 +51,7 @@ export default function InputSelect({
 					type="text"
 					placeholder={placeholder}
 					{...register(id)}
-					className="w-[224px] h-[48px] rounded-[14px] pl-[18px] bg-input placeholder:text-darck placeholder:pl-[18px]  "
+					className={`h-[48px] rounded-[14px] pl-[18px] bg-input placeholder:text-darck  outline-darkBlue ${className}`}
 				/>
 				<BtnDropDown onClick={onBtnClick} isOpen={isActiveSelect} />
 				{isActiveSelect & isDropdown ? (
