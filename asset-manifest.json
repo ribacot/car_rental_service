@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/car_rental_service/static/css/main.a60d6661.css",
-    "main.js": "/car_rental_service/static/js/main.ddae1721.js",
+    "main.css": "/car_rental_service/static/css/main.b32be4f7.css",
+    "main.js": "/car_rental_service/static/js/main.1d9707a3.js",
     "static/media/heart.svg": "/car_rental_service/static/media/heart.4bab3b499338dd7f332c4598fea1d503.svg",
     "index.html": "/car_rental_service/index.html",
     "static/media/x.svg": "/car_rental_service/static/media/x.4d23e6fbc3d7ad4d36e0915a4345a3af.svg",
     "static/media/chevron-down.svg": "/car_rental_service/static/media/chevron-down.24cd320d509ea2ebbeb4265f8030bafb.svg",
     "static/media/chevron-up.svg": "/car_rental_service/static/media/chevron-up.96a9794781a3768799c73822c58120bf.svg",
-    "main.a60d6661.css.map": "/car_rental_service/static/css/main.a60d6661.css.map",
-    "main.ddae1721.js.map": "/car_rental_service/static/js/main.ddae1721.js.map"
+    "main.b32be4f7.css.map": "/car_rental_service/static/css/main.b32be4f7.css.map",
+    "main.1d9707a3.js.map": "/car_rental_service/static/js/main.1d9707a3.js.map"
   },
   "entrypoints": [
-    "static/css/main.a60d6661.css",
-    "static/js/main.ddae1721.js"
+    "static/css/main.b32be4f7.css",
+    "static/js/main.1d9707a3.js"
   ]
 }
