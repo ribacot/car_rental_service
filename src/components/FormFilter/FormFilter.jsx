@@ -43,11 +43,12 @@ export default function FormFilter() {
 		console.log("model: ", model);
 		console.log("price: ", price);
 		if (model.toLowerCase() === stopWord.toLowerCase()) {
-			dispatch(addFilter({ model: "" }));
 			dispatch(removeCars());
-
+			dispatch(addFilter({ model: "" }));
+			onDrop();
 			return;
 		}
+		
 		dispatch(removeCars());
 		model && dispatch(addFilter({ model }));
 		onDrop();
@@ -55,7 +56,7 @@ export default function FormFilter() {
 	};
 
 	const onDrop = () => {
-		setIsOpenDropdown(false);
+		setIsOpenDropdown(!isDropdown);
 	};
 
 	return (
