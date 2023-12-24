@@ -9,7 +9,7 @@ export default function ListDropDown({ arr = [], onClick}) {
 	};
 	return (
 		<div className="absolute left-0 top-[52px] w-full h-[272px] p-[18px] shadow border-current border-[1px] rounded-[14px] bg-white  z-10 dropDownText ">
-			<ul className=" w-full h-full overflow-y-scroll ">
+			<ul className=" w-full h-full overflow-y-scroll scrollBar">
 				{arr.map((el, idx) => (
 					<li
 						key={idx}

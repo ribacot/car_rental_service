@@ -9,12 +9,14 @@ export default function InputSelect({
 	isDropdown,
 	onDrop,
 	dropDownArr = [],
+	isSelect=true,
 	className=""
 }) {
 	const { id = "", placeholder = "", label = "" } = valueObj;
 	const [value, setvalue] = useState("");
 	const [isActiveSelect, setIsActiveSelect] = useState(false);
 	const Select = useRef(null);
+
 	const onDropMemo = useCallback(() => {
 		onDrop();
 	}, [onDrop]);
@@ -38,7 +40,7 @@ export default function InputSelect({
 
 	return (
 		<div>
-			<label htmlFor={id} ref={Select} className="lebleText">
+			<label htmlFor={id} ref={Select} className="lebleText ">
 				{label}
 			</label>
 			<div className="relative">
@@ -51,9 +53,9 @@ export default function InputSelect({
 					type="text"
 					placeholder={placeholder}
 					{...register(id)}
-					className={`h-[48px] rounded-[14px] pl-[18px] bg-input placeholder:text-darck  outline-darkBlue ${className}`}
+					className={`h-[48px] rounded-[14px] pl-[18px] bg-input placeholder:text-darck  outline-darkBlue outline-[1px] ${className}`}
 				/>
-				<BtnDropDown onClick={onBtnClick} isOpen={isActiveSelect} />
+				{isSelect?<BtnDropDown onClick={onBtnClick} isOpen={isActiveSelect} />:null}
 				{isActiveSelect & isDropdown ? (
 					<ListDropDown arr={dropDownArr} onClick={onSElect} />
 				) : null}

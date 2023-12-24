@@ -25,3 +25,7 @@ letter-spacing: 0em;
 color: #12141733;
 
 }
+
+.scrollBar::-webkit-scrollbar{
+	display: none;
+}

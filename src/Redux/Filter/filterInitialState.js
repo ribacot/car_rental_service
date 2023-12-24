@@ -1,4 +1,6 @@
-export const filterInitialState={
-    model:"",
-    price:""
-}
+export const filterInitialState = {
+	model: "",
+	price: "",
+	mileadgFrom: null,
+	mileadgTo: null,
+};
