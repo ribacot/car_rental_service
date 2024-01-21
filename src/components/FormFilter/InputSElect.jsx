@@ -9,8 +9,8 @@ export default function InputSelect({
 	isDropdown,
 	onDrop,
 	dropDownArr = [],
-	isSelect=true,
-	className=""
+	isSelect = true,
+	className = "",
 }) {
 	const { id = "", placeholder = "", label = "" } = valueObj;
 	const [value, setvalue] = useState("");
@@ -20,6 +20,18 @@ export default function InputSelect({
 	const onDropMemo = useCallback(() => {
 		onDrop();
 	}, [onDrop]);
+
+	useEffect(() => {
+		const handleClick = evt => {
+		  if (Select.current && Select.current.contains(evt.target)) {
+			setIsActiveSelect(false);
+		  }
+		};
+	
+		window.addEventListener('click', handleClick);
+	
+		return () => window.removeEventListener('click', handleClick);
+	  }, [Select]);
 
 	useEffect(() => {
 		if (!isDropdown) {
@@ -40,7 +52,7 @@ export default function InputSelect({
 
 	return (
 		<div>
-			<label htmlFor={id} ref={Select} className="lebleText ">
+			<label htmlFor={id} ref={Select} className="lebleText">
 				{label}
 			</label>
 			<div className="relative">
@@ -49,13 +61,13 @@ export default function InputSelect({
 					readOnly={true}
 					onClick={onBtnClick}
 					onChange={onSElect}
-					value={value}
+					value={id === "price" ? `To ${value} $` : value}
 					type="text"
 					placeholder={placeholder}
 					{...register(id)}
 					className={`h-[48px] rounded-[14px] pl-[18px] bg-input placeholder:text-darck  outline-darkBlue outline-[1px] ${className}`}
 				/>
-				{isSelect?<BtnDropDown onClick={onBtnClick} isOpen={isActiveSelect} />:null}
+				{isSelect ? <BtnDropDown onClick={onBtnClick} isOpen={isActiveSelect} /> : null}
 				{isActiveSelect & isDropdown ? (
 					<ListDropDown arr={dropDownArr} onClick={onSElect} />
 				) : null}

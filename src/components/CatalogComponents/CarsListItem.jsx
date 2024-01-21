@@ -29,7 +29,7 @@ export default function CarsListItem({ car = {} }) {
 
 	useEffect(() => {
 		const includes = favoriteIdArr?.includes(car.id);
-		if (includes) {
+		if (includes) { 
 			setIsFavorite(true);
 		} else {
 			setIsFavorite(false);

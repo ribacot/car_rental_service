@@ -1,6 +1,6 @@
 export const filterInitialState = {
 	model: "",
-	price: "",
+	price: null,
 	mileadgFrom: null,
 	mileadgTo: null,
 };

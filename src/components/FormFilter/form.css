@@ -3,9 +3,11 @@
 	font-weight: 500;
 	line-height: 18px;
 	letter-spacing: 0em;
+	color: #8A8A89;
+
 }
 
-input::placeholder {
+input,input::placeholder {
 	font-size: 18px;
 	font-weight: 500;
 	line-height: 20px;

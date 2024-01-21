@@ -1,30 +1,31 @@
 import { useCallback, useEffect } from "react";
 import BtnClose from "../Ui/BtnClose";
+import useClose from "../../utilites/useClose";
 
 export default function ModalWrapper({ children, onClick, isModalActive }) {
 	useEffect(() => {
-		if (isModalActive) {
-			document.body.classList.add("noScroll");
-		} else {
-			document.body.classList.remove("noScroll");
-		}
-	}, [isModalActive]);
+		document.body.classList.add("noScroll");
 
-	const onClickmemo = useCallback(() => {
-		onClick();
-	}, [onClick]);
+		return () => document.body.classList.remove("noScroll");
+	}, []);
 
-	useEffect(() => {
-		const hendleModal = (e) => {
-			if (e.code === "Escape") {
-				onClickmemo();
-			}
-		};
-		window.addEventListener("keydown", hendleModal);
-		return () => {
-			window.removeEventListener("keydown", hendleModal);
-		};
-	}, [onClickmemo]);
+	useClose(onClick)
+
+	// const onClickmemo = useCallback(() => {
+	// 	onClick();
+	// }, [onClick]);
+
+	// useEffect(() => {
+	// 	const hendleModal = (e) => {
+	// 		if (e.code === "Escape") {
+	// 			onClickmemo();
+	// 		}
+	// 	};
+	// 	window.addEventListener("keydown", hendleModal);
+	// 	return () => {
+	// 		window.removeEventListener("keydown", hendleModal);
+	// 	};
+	// }, [onClickmemo]);
 
 	const hendleBackDrop = (e) => {
 		if (e.target === e.currentTarget) onClick();

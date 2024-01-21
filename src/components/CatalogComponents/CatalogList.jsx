@@ -9,7 +9,20 @@ import { filterSelector } from "../../Redux/Filter/filterSelectors";
 export default function CatalogList({ isFavoritePage = false }) {
 	const dispatch = useDispatch();
 	const { cars } = useSelector(getAllCarsSelect);
-	const  {model}  = useSelector(filterSelector);
+	const { model, price, mileadgFrom, mileadgTo } = useSelector(filterSelector);
+	// const filteredCars= cars.filter(el=>{el.rentalPrice})
+	// const transformRentalPriceNumber = (price) => Number(price.split("").slice(1).join(""));
+	// const parsPrice = Number(price?.split(" ")[1]);
+	const parsPrice = price?.split(" ")[1] || "";
+	const filteredCars = cars.filter(
+		(el) => Number(el.rentalPrice.split("").slice(1).join("")) > Number(parsPrice)
+	);
+	// const filteredCars = cars.map((el) => el.rentalPrice.split("").slice(1).join(""));
+	console.log("filteredCars", filteredCars);
+	console.log("cars: ", cars);
+	console.log("price :", price);
+	console.log("parsPrice", parsPrice);
+
 	const favoriteIdArr = useSelector(getFavoritIdArrSelect);
 
 	const [isloadMore, setIsloadMore] = useState(true);
@@ -33,9 +46,9 @@ export default function CatalogList({ isFavoritePage = false }) {
 
 	useEffect(() => {
 		if (!cars.length) {
-			dispatch(getAllcarsThunk({page,make:model}));
+			dispatch(getAllcarsThunk({ page, make: model }));
 		}
-	}, [dispatch, cars.length, page,model]);
+	}, [dispatch, cars.length, page, model]);
 
 	useEffect(() => {
 		if ((page > 1) & (Math.ceil(carrentPage) < page)) {
@@ -51,7 +64,7 @@ export default function CatalogList({ isFavoritePage = false }) {
 		<>
 			<ul className="flex flex-wrap gap-[28px] pb-[100px] justify-center md:justify-between">
 				{!isFavoritePage
-					? cars?.map((car) => <CarsListItem car={car} key={car.id} />)
+					? filteredCars?.map((car) => <CarsListItem car={car} key={car.id} />)
 					: favoriteCars.length
 					? favoriteCars?.map((car) => <CarsListItem car={car} key={car.id} />)
 					: null}

@@ -1,15 +1,16 @@
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { modelArr } from "./downDropArrs";
 import { priceArr } from "./downDropArrs";
 import { removeCars } from "../../Redux/Cars/carsSlice";
-import { addFilter } from "../../Redux/Filter/filterSlice";
+import { addFilter, removeFilters } from "../../Redux/Filter/filterSlice";
 import Button from "../Ui/Button";
 
 import InputSelect from "./InputSElect";
 import InputFilterMileage from "./InputFilterMileage";
+import useClose from "../../utilites/useClose";
 
 const modelInputsObj = {
 	id: "model",
@@ -46,25 +47,31 @@ export default function FormFilter() {
 			return;
 		}
 		console.log("model: ", model);
-		console.log("price: ", price);
 		console.log("mileadgFrom: ", mileadgFrom);
 
 		if (model.toLowerCase() === stopWord.toLowerCase()) {
 			dispatch(removeCars());
-			dispatch(addFilter({ model: "" }));
+			dispatch(removeFilters());
 			onDrop();
 			return;
 		}
 
 		dispatch(removeCars());
-		model && dispatch(addFilter({ model }));
+		dispatch(addFilter(data));
+
 		onDrop();
 		reset();
 	};
+	useEffect(() => {
+		dispatch(removeFilters());
+	
+	}, [dispatch])
+	
 
 	const onDrop = () => {
 		setIsOpenDropdown(!isDropdown);
 	};
+	useClose(onDrop);
 
 	return (
 		<div className="flex justify-center pb-[30px]">
@@ -73,7 +80,7 @@ export default function FormFilter() {
 				onSubmit={handleSubmit(onSubmit)}
 				noValidate
 				autoComplete="off"
-				className="flex items-end gap-[18px] flex-wrap"
+				className="flex items-end gap-[18px] "
 			>
 				<InputSelect
 					valueObj={modelInputsObj}
@@ -88,7 +95,7 @@ export default function FormFilter() {
 					register={register}
 					isDropdown={isDropdown}
 					onDrop={() => setIsOpenDropdown(!isDropdown)}
-					dropDownArr={priceArr({ start: 30, limit: 200, step: 10 })}
+					dropDownArr={priceArr({ start: 20, limit: 250, step: 10 })}
 					className="w-[125px]"
 				/>
 				<div className="flex items-end">
